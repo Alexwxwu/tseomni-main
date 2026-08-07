@@ -23,7 +23,7 @@ export default defineConfig({
       ],
     }),
   ],
-  base:'/tseomni',
+  base:'/tseomni-main/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
