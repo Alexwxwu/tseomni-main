@@ -3,6 +3,15 @@ import { ref } from 'vue'
 
 const selectedCase = ref('case1') // 只需要这一行
 const base = import.meta.env.BASE_URL
+
+// Real-world dialogue AVTSE comparison: AV-Sepformer (strongest discriminative
+// baseline) vs. TSE-Omni. Each scene has a paired AV-Sepformer / TSE-Omni clip.
+const realworldScenes = [
+  { name: 'Live Talk 1', avsep: 'avsep-live.mp4',        omni: 'omni-live.mp4' },
+  { name: 'Live Talk 2', avsep: 'avsep-live2.mp4',       omni: 'omni-live2.mp4' },
+  { name: 'Women',       avsep: 'avsep-women.mp4',       omni: 'omni-women.mp4' },
+  { name: 'Trump-Biden', avsep: 'avsep-trump_biden.mp4', omni: 'omni-trump_biden.mp4' },
+]
 </script>
 
 <template>
@@ -66,7 +75,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">LlaSE-G1</div>
+          <div class="audio-title">LLaSE-G1</div>
           <audio controls>
             <source :src="base + 'output_audio/baseline_compare_case1/LLaSE-G1/test_test_HiwJ0hNl1Fw_00002_0_test_VSLurJfOSiA_00001_7.835460015641594_4.096.wav'" type="audio/wav">
           </audio>
@@ -207,7 +216,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">LlaSE-G1</div>
+          <div class="audio-title">LLaSE-G1</div>
           <audio controls>
             <source :src="base + 'output_audio/baseline_compare_case2/LLaSE-G1/test_test_UmvOgW6iV2s_00007_0_test_FxtSMZKMdes_00009_-8.579278836042262_4.288.wav'" type="audio/wav">
           </audio>
@@ -333,7 +342,7 @@ const base = import.meta.env.BASE_URL
 
       </el-row>
 
-    <!-- Sample 2 -->
+    <!-- Sample 1 (continued) -->
     <el-row justify="center" class="audio-row">
       
       <el-col :span="4">
@@ -393,7 +402,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
          </el-row>
 
-    <!-- Sample 2 -->
+    <!-- Sample 2 (continued) -->
     <el-row justify="center" class="audio-row">
       <el-col :span="4">
         <el-container class="video-container">
@@ -421,7 +430,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">ImageNet</div>
+          <div class="audio-title">ImagineNet</div>
           <audio controls>
             <source :src="base + 'output_audio/vonly1s/ImagineNET/test_test_TVtgb153S6I_00001_0_test_V1yW5IsnSjo_00001_-0.52783909452579_6.08_mask2_start75_len4.wav'" type="audio/wav">
           </audio>
@@ -691,7 +700,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">Audio Enroll</div>
+          <div class="audio-title">Audio Enroll Results</div>
           <audio controls>
             <source :src="base + 'sparse_overlap/segcase01_audio_enroll_out.wav'" type="audio/wav">
           </audio>
@@ -699,7 +708,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">Visual Enroll</div>
+          <div class="audio-title">Visual Enroll Results</div>
           <audio controls>
             <source :src="base + 'sparse_overlap/segcase01_visual_enroll_out.wav'" type="audio/wav">
           </audio>
@@ -744,7 +753,7 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">Audio Enroll</div>
+          <div class="audio-title">Audio Enroll Results</div>
           <audio controls>
             <source :src="base + 'sparse_overlap/segcase02_audio_enroll_out.wav'" type="audio/wav">
           </audio>
@@ -752,10 +761,48 @@ const base = import.meta.env.BASE_URL
       </el-col>
       <el-col :span="4">
         <el-container class="video-container">
-          <div class="audio-title">Visual Enroll</div>
+          <div class="audio-title">Visual Enroll Results</div>
           <audio controls>
             <source :src="base + 'sparse_overlap/segcase02_visual_enroll_out.wav'" type="audio/wav">
           </audio>
+        </el-container>
+      </el-col>
+    </el-row>
+
+
+    <!-- Real-World Dialogue: AV-Sepformer vs TSE-Omni -->
+    <el-divider />
+    <el-row justify="center">
+      <h1 class="section-title">Real-World Dialogue</h1>
+    </el-row>
+    <el-row justify="center">
+      <p class="section-desc">
+        Audio-visual TSE on real dialogue clips, comparing the strongest
+        discriminative baseline (AV-Sepformer) with TSE-Omni.
+      </p>
+    </el-row>
+
+    <el-row
+      v-for="scene in realworldScenes"
+      :key="scene.name"
+      justify="center"
+      class="audio-row"
+    >
+      <h2 class="row-title">{{ scene.name }}</h2>
+      <el-col :span="8">
+        <el-container class="video-container">
+          <div class="audio-title">AV-Sepformer</div>
+          <video controls preload playsinline class="wide-video">
+            <source :src="base + 'output_audio/realworld/' + scene.avsep" type="video/mp4">
+          </video>
+        </el-container>
+      </el-col>
+      <el-col :span="8">
+        <el-container class="video-container">
+          <div class="audio-title">TSE-Omni</div>
+          <video controls preload playsinline class="wide-video">
+            <source :src="base + 'output_audio/realworld/' + scene.omni" type="video/mp4">
+          </video>
         </el-container>
       </el-col>
     </el-row>
@@ -779,6 +826,25 @@ const base = import.meta.env.BASE_URL
   color: #3498db;
   text-align: center;
   width: 100%;
+}
+
+.section-desc {
+  max-width: 720px;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  color: #5a6b7b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.wide-video {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 6px;
+  background: #000;
+  object-fit: contain;
 }
 
 .audio-row {
