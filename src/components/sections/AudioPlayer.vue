@@ -9,8 +9,8 @@ const base = import.meta.env.BASE_URL
 const realworldScenes = [
   { name: 'Live Talk 1', avsep: 'avsep-live.mp4',        omni: 'omni-live.mp4' },
   { name: 'Live Talk 2', avsep: 'avsep-live2.mp4',       omni: 'omni-live2.mp4' },
-  { name: 'Women',       avsep: 'avsep-women.mp4',       omni: 'omni-women.mp4' },
-  { name: 'Trump-Biden', avsep: 'avsep-trump_biden.mp4', omni: 'omni-trump_biden.mp4' },
+  { name: 'Live Talk 3', avsep: 'avsep-women.mp4',       omni: 'omni-women.mp4' },
+  { name: 'Live Talk 4', avsep: 'avsep-trump_biden.mp4', omni: 'omni-trump_biden.mp4' },
 ]
 </script>
 
