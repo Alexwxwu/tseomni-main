@@ -7,7 +7,7 @@ import { Document, Files, MagicStick, Picture, DataAnalysis, Film } from '@eleme
 const logo = './icon.png'
 
 // 标题
-const title = 'TSE-Omni: Unify Audio and Visual Target Speech Extraction via a Single Autoregressive Large Language Model'
+const title = 'Exploring a Single Autoregressive LLM for Unified Target Speech Extraction across Synchronous and Asynchronous Cues'
 
 // 标题颜色
 const title_color = '#000000'
@@ -73,9 +73,9 @@ const btn_color = '#444444'
 
 // 强调内容
 const emphases = [
-	"Efficient: A unified framework that supports both audio-based and visual-based TSE within a single autoregressive LLM, eliminating the need for modality-specific architectures and reducing deployment complexity.",
-	"Cognitive-inspired: Leverages the LLM's next-token prediction capability to naturally integrate historical predicted speech semantic tokens as self-enrollment, seamlessly align them with synchronous visual semantic tokens, emulating human multisensory integration.",
-	"Support target speaker switch, visual corruption, and streaming inference scenario."
+	"One model, multiple cues: a single autoregressive LLM handles both synchronous cues (lip movements, gestures) and asynchronous cues (enrollment audio, text), avoiding a separate extractor per cue.",
+	"Self-enrollment: each step predicts target-speech tokens from its own previous outputs, building a target-speech context that continues when visual frames are missing.",
+	"Evaluated on VoxCeleb2 and zero-shot LRS3, with target switching, sparse overlap, and streaming inference."
   // "🎉 [ABCD 2024] Poster",
   // "🥰 欢迎关注“减论”微信公众号/B站/知乎/小红书",
   // "传递人工智能算法科普教育的减约理解",
